@@ -40,14 +40,7 @@ class ViewControllerOperation: Operation {
         
         viewController.delegate = self
     }
-    
-    override func finish(errors: [NSError] = []) {
-        executeOnMainThread {
-            super.finish(errors)
-        }
-    }
 }
-
 
 extension ViewControllerOperation: OperableDelegate {
     func viewController(viewController: Operable, didFinishWithCoordinator outputCoordinator: Coordinator) {
