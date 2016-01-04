@@ -2,24 +2,24 @@
 import PFoundation
 import UIKit
 
-protocol Coordinator {
+protocol FunnelCompletionCoordinator {
 }
 
-struct MyCoordinator: Coordinator {}
+struct MyCoordinator: FunnelCompletionCoordinator {}
 
-protocol Operable {
-    var coordinator: Coordinator? { get set }
-    var delegate: OperableDelegate? { get set }
+protocol FunnelStep {
+    var coordinator: FunnelCompletionCoordinator? { get set }
+    var delegate: FunnelStepDelegate? { get set }
 }
 
-protocol OperableDelegate {
-    func viewController(viewController: Operable, didFinishWithCoordinator outputCoordinator: Coordinator)
-    func viewController(viewController: Operable, didFinishWithErrors errors: [NSError])
+protocol FunnelStepDelegate {
+    func viewController(viewController: FunnelStep, didFinishWithCoordinator outputCoordinator: FunnelCompletionCoordinator)
+    func viewController(viewController: FunnelStep, didFinishWithErrors errors: [NSError])
 }
 
 class ViewControllerOperation: Operation {
     let viewController: OperableViewController?
-    var outputCoordinator: Coordinator? {
+    var outputCoordinator: FunnelCompletionCoordinator? {
         return viewController?.coordinator
     }
     
@@ -42,12 +42,12 @@ class ViewControllerOperation: Operation {
     }
 }
 
-extension ViewControllerOperation: OperableDelegate {
-    func viewController(viewController: Operable, didFinishWithCoordinator outputCoordinator: Coordinator) {
+extension ViewControllerOperation: FunnelStepDelegate {
+    func viewController(viewController: FunnelStep, didFinishWithCoordinator outputCoordinator: FunnelCompletionCoordinator) {
         finish()
     }
     
-    func viewController(viewController: Operable, didFinishWithErrors errors: [NSError]) {
+    func viewController(viewController: FunnelStep, didFinishWithErrors errors: [NSError]) {
         finish(errors)
     }
 }

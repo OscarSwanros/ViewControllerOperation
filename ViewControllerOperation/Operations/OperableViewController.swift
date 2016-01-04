@@ -2,9 +2,9 @@
 import UIKit
 import PFoundation
 
-class OperableViewController: UIViewController, Operable {
-    var delegate: OperableDelegate?
-    var coordinator: Coordinator? = MyCoordinator()
+class OperableViewController: UIViewController, FunnelStep {
+    var delegate: FunnelStepDelegate?
+    var coordinator: FunnelCompletionCoordinator? = MyCoordinator()
     
     private var _cancelButton: UIBarButtonItem?
     private var cancelButton: UIBarButtonItem {
