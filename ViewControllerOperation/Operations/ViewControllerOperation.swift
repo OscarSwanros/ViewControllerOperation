@@ -17,24 +17,21 @@ protocol OperableDelegate {
     func viewController(viewController: Operable, didFinishWithErrors errors: [NSError])
 }
 
-
 class ViewControllerOperation: Operation {
-    private let viewController: OperableViewController?
-    private let startingPoint: UIViewController?
-    var outputCoordinator: Coordinator?
+    let viewController: OperableViewController?
+    var outputCoordinator: Coordinator? {
+        return viewController?.coordinator
+    }
     
     init(
-        viewController: OperableViewController,
-        fromViewController starting: UIViewController? = nil
+        viewController: OperableViewController
         )
     {
         self.viewController = viewController
-        self.startingPoint = starting ?? UIApplication.sharedApplication().keyWindow?.rootViewController
     }
     
     override func execute() {
         guard
-            let startingPoint = startingPoint,
             let viewController = viewController else {
                 finish()
                 
@@ -42,17 +39,11 @@ class ViewControllerOperation: Operation {
         }
         
         viewController.delegate = self
-        
-        let nav = UINavigationController(rootViewController: viewController)
-        
-        executeOnMainThread {
-            startingPoint.presentViewController(nav, animated: true, completion: nil)
-        }
     }
     
     override func finish(errors: [NSError] = []) {
         executeOnMainThread {
-            self.startingPoint?.dismissViewControllerAnimated(true) { super.finish(errors) }
+            super.finish(errors)
         }
     }
 }
@@ -60,7 +51,6 @@ class ViewControllerOperation: Operation {
 
 extension ViewControllerOperation: OperableDelegate {
     func viewController(viewController: Operable, didFinishWithCoordinator outputCoordinator: Coordinator) {
-        self.outputCoordinator = outputCoordinator
         finish()
     }
     

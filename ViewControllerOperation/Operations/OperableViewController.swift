@@ -44,3 +44,11 @@ class OperableViewController: UIViewController, Operable {
         delegate?.viewController(self, didFinishWithCoordinator: coordinator!)
     }
 }
+
+class AnotherOperableViewController: OperableViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .blueColor()
+    }
+}

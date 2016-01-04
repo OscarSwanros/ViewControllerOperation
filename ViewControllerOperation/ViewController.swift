@@ -29,24 +29,23 @@ class ViewController: UIViewController {
     }
     
     func buttonTapped() {
-        let v = OperableViewController()
-        let op = ViewControllerOperation(viewController: v, fromViewController: self)
-        op.addObserver(Observer())
+        let funnel = FunnelOperation(context: self)
+        funnel.addObserver(Observer())
         
-        queue.addOperation(op)
+        queue.addOperation(funnel)
     }
 }
 
 struct Observer: OperationObserver {
     func operation(operation: Operation, didProduceOperation newOperation: NSOperation) {
-        print("Produce operation")
+        print("produce")
     }
     
     func operationDidFinish(operation: Operation, errors: [NSError]) {
-        print("Finish operation")
+        print("finish")
     }
     
     func operationDidStart(operation: Operation) {
-        print("Start operation")
+        print("start")
     }
 }

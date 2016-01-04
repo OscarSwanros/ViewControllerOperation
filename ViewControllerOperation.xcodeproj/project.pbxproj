@@ -18,6 +18,7 @@
 		DF4A8A381C3AEEBD008D6B6E /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4A8A301C3AE3E3008D6B6E /* PFoundation.framework */; };
 		DF4A8A391C3AEEBD008D6B6E /* PFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF4A8A301C3AE3E3008D6B6E /* PFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF4A8A3C1C3AF678008D6B6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4A8A3B1C3AF678008D6B6E /* ViewController.swift */; };
+		DF4A8A401C3B1F95008D6B6E /* FunnelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4A8A3F1C3B1F95008D6B6E /* FunnelOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		DF4A8A341C3AE412008D6B6E /* ViewControllerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerOperation.swift; sourceTree = "<group>"; };
 		DF4A8A361C3AE592008D6B6E /* OperableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperableViewController.swift; sourceTree = "<group>"; };
 		DF4A8A3B1C3AF678008D6B6E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF4A8A3F1C3B1F95008D6B6E /* FunnelOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunnelOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		DF4A8A321C3AE3ED008D6B6E /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				DF4A8A3F1C3B1F95008D6B6E /* FunnelOperation.swift */,
 				DF4A8A341C3AE412008D6B6E /* ViewControllerOperation.swift */,
 				DF4A8A361C3AE592008D6B6E /* OperableViewController.swift */,
 			);
@@ -300,6 +303,7 @@
 				DF4A8A031C3AE39F008D6B6E /* AppDelegate.swift in Sources */,
 				DF4A8A3C1C3AF678008D6B6E /* ViewController.swift in Sources */,
 				DF4A8A351C3AE412008D6B6E /* ViewControllerOperation.swift in Sources */,
+				DF4A8A401C3B1F95008D6B6E /* FunnelOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
