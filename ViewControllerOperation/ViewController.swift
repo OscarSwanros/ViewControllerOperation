@@ -31,7 +31,22 @@ class ViewController: UIViewController {
     func buttonTapped() {
         let v = OperableViewController()
         let op = ViewControllerOperation(viewController: v, fromViewController: self)
+        op.addObserver(Observer())
         
         queue.addOperation(op)
+    }
+}
+
+struct Observer: OperationObserver {
+    func operation(operation: Operation, didProduceOperation newOperation: NSOperation) {
+        print("Produce operation")
+    }
+    
+    func operationDidFinish(operation: Operation, errors: [NSError]) {
+        print("Finish operation")
+    }
+    
+    func operationDidStart(operation: Operation) {
+        print("Start operation")
     }
 }
