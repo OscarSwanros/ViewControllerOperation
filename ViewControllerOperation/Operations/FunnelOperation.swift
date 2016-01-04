@@ -12,13 +12,15 @@ class FunnelOperation: GroupOperation {
         
         let first = ViewControllerOperation(viewController: OperableViewController())
         let second = ViewControllerOperation(viewController: AnotherOperableViewController())
+        let third = ViewControllerOperation(viewController: YetAnother())
         
         let final = NSBlockOperation(block: {})
         
         second.addDependency(first)
-        final.addDependency(second)
+        third.addDependency(second)
+        final.addDependency(third)
         
-        operations = [first, second, final]
+        operations = [first, second, third, final]
         
         super.init(operations: operations)
     }
@@ -40,7 +42,7 @@ class FunnelOperation: GroupOperation {
     }
     
     override func operationDidFinish(operation: NSOperation, withErrors errors: [NSError]) {
-        guard let viewControllerOperation = operation as? ViewControllerOperation else {
+        guard let viewControllerOperation = operation as? ViewControllerOperation where errors.count == 0 else {
             finish(errors)
             return
         }

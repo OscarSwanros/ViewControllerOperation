@@ -34,13 +34,11 @@ class OperableViewController: UIViewController, Operable {
     }
     
     func cancelButtonTapped() {
-        print("cancel")
         let error = ErrorSpecification(ec: OperationError.ExecutionFailed)
         delegate?.viewController(self, didFinishWithErrors: [NSError(error: error)])
     }
     
     func nextButtonTapped() {
-        print("next")
         delegate?.viewController(self, didFinishWithCoordinator: coordinator!)
     }
 }
@@ -50,5 +48,13 @@ class AnotherOperableViewController: OperableViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .blueColor()
+    }
+}
+
+class YetAnother: OperableViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .yellowColor()
     }
 }
